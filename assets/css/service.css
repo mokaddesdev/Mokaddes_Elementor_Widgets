@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    background-color: #191a2b;
+    /* background-color: #191a2b; */
 }
 .service-section{
     width: 100%;
@@ -160,4 +160,19 @@
     width: 100%;
     height: 300px;
 }
+}
+
+.mea-image-slider {
+    width: 100%;
+}
+
+.mea-image-slider .slider-item {
+    padding: 10px;
+}
+
+.mea-image-slider img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
 }

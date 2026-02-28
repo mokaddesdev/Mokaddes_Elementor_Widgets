@@ -27,22 +27,20 @@ function mea_enqueue_frontend_styles() {
 	wp_enqueue_style( 'service-css' );
 }
 add_action( 'elementor/frontend/before_enqueue_styles', 'mea_enqueue_frontend_styles' );
-// function mea_register_frontend_scripts() {
-// 	wp_register_script( 'frontend-script-1', plugins_url( 'assets/js/frontend-script-1.js', __FILE__ ) );
-// 	wp_register_script( 'frontend-script-2', plugins_url( 'assets/js/frontend-script-2.js', __FILE__ ), [ 'external-library' ] );
-// 	wp_register_script( 'external-library', plugins_url( 'assets/js/libs/external-library.js', __FILE__ ) );
-// }
-// add_action( 'elementor/frontend/before_register_scripts', 'mea_register_frontend_scripts' );
+function mea_register_frontend_scripts() {
+	wp_register_script( 'image-slider-js', plugins_url( 'assets/js/image-slider.js', __FILE__ ) );
+}
+add_action( 'elementor/frontend/before_register_scripts', 'mea_register_frontend_scripts' );
 
-// function my_plugin_enqueue_frontend_scripts() {
-// 	wp_enqueue_script( 'frontend-script-1' );
-// 	wp_enqueue_script( 'frontend-script-2' );
-// }
-// add_action( 'elementor/frontend/before_enqueue_scripts', 'my_plugin_enqueue_frontend_scripts' );
+function mea_enqueue_frontend_scripts() {
+	wp_enqueue_script( 'image-slider-js' );
+}
+add_action( 'elementor/frontend/before_enqueue_scripts', 'mea_enqueue_frontend_scripts' );
 function mea_register_new_widgets( $widgets_manager ) {
 
 	require_once( __DIR__ . '/widgets/services.php' );
-
+	require_once( __DIR__ . '/widgets/image-slider.php' );
+	$widgets_manager->register( new \MEA_Image_Slider() );
 	$widgets_manager->register( new \MEA_Service_Widget() );
 
 }
